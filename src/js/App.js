@@ -1,14 +1,16 @@
-import React from 'react'; 
+import React, {Component} from 'react';
 import Header from './Header';
-import '../scss/app.scss';
+import '../scss/app.scss'; 
+import Repositories from './Repositiories';
 
-function App() {
+export default class App extends Component {
 
-  return (
-    <div className="App"> 
-      <Header />
-    </div>
-  );
-}
-
-export default App;
+  render() {
+    return (
+      <div className="App">
+        <Header />
+        <Repositories />
+      </div>
+    );
+  }
+} 
