@@ -2,11 +2,12 @@
     &_list {
         counter-reset: section;
         margin: 0;
-        padding: 0 0 0 30px;
+        padding: 0;
 
         li {
             align-items: flex-start;
             display: flex;
+            flex-wrap: wrap;
 
             &:hover {
                 // height: 300px;
@@ -15,10 +16,18 @@
             &::before {
                 content: counter(section) '.';
                 counter-increment: section;
-                display: inline-block;
-                margin-left: -20px;
+                display: inline-block; 
                 padding: 10px;
             }
+        }
+    }
+
+    &_item{
+
+
+        .repos_loader{
+            visibility: visible;
+            display: none;
         }
     }
 
@@ -52,7 +61,7 @@
         max-height: 45px;
         overflow: hidden;
         transition: all .5s linear;
-
+        color: blue;
         &.open {
             max-height: 400px;
         }

@@ -1,0 +1,46 @@
+@media all and (max-width: 860px){
+#root{
+    max-width: 98%
+}
+
+    .repos_branches{
+        
+        grid-template-columns: 50% 50%;
+    }
+}
+
+
+
+@media all and (max-width: 640px){
+header input{
+    margin-right: 0;
+}
+
+.repos{
+
+    &_name{
+        flex-grow: 1;
+        width: auto;
+    }
+
+    &_branches{
+        max-height: 0;
+        width: 100%;
+        margin : 0;
+        padding: 0;
+        padding-left: 55px;
+
+        &.closed{
+            max-height: 0;
+        }
+    }
+}
+}
+
+
+@media all and (max-width: 320px){
+    .repos_branches{
+        
+        grid-template-columns: 100%;
+    }
+}   

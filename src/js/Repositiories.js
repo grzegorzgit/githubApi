@@ -10,7 +10,12 @@ export default class Repositories extends Component {
 
         this.displayRepos = this.displayRepos.bind(this)
         this.loadBranches = this.loadBranches.bind(this)
-        this.fadeInBranches = this.fadeInBranches.bind(this) 
+        this.fadeInBranches = this.fadeInBranches.bind(this)
+
+
+        window.onresize = () => {
+            this.setState({ 'is_it_mobile': window.outerWidth >= 640 });
+        }
     }
 
     displayRepos() {
@@ -52,7 +57,7 @@ export default class Repositories extends Component {
         // Load branches if they haven't been loaded yet.
         if (!branches_block.hasChildNodes()) {
 
-            branches_block.parentNode.querySelector('.repos_loader').style.visibility = 'visible';
+            branches_block.parentNode.querySelector('.repos_loader').style.display = 'block';
 
             let xmlhttp = new XMLHttpRequest();
             xmlhttp.open('GET', `https://api.github.com/repos/${this.props.user}/${e.target.dataset.repo}/branches`, true);
@@ -67,7 +72,7 @@ export default class Repositories extends Component {
                         })
 
                         // Show the branches with fade in animation.
-            branches_block.parentNode.querySelector('.repos_loader').style.visibility = 'hidden';
+                        branches_block.parentNode.querySelector('.repos_loader').style.display = 'none';
                         _this.fadeInBranches(branches_block.querySelectorAll('span'))
 
                     } else {
@@ -80,7 +85,7 @@ export default class Repositories extends Component {
         }
 
     }
- 
+
 
     fadeInBranches(branches) {
         let branch_index = 0;
@@ -98,11 +103,11 @@ export default class Repositories extends Component {
         return (
             <main>
                 <div className="repos">
-                    <span className="repos_loader" id="main_loader" style={{'visibility': this.props.reposLoader}}>loading</span>
+                    <span className="repos_loader" id="main_loader" style={{ 'visibility': this.props.reposLoader }}>loading</span>
                     <ol className="repos_list">
                         {this.displayRepos()}
                     </ol>
-                    
+
                 </div>
             </main>
         );
