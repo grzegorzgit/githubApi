@@ -1,48 +1,88 @@
 .repos {
-
-    &_header,
-    &_item {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: stretch;
-
-        > div,
-        > li {
-            padding: 15px;
-        }
-    }
-
-    &_item {
-        &:nth-child(odd) {
-            background: rgba(0, 0, 0, .1);
-        }
-
-        &:hover {
-            background: rgba(220, 220, 250, 1);
-            color: blue;
-        }
-    }
-
     &_list {
+        counter-reset: section;
         margin: 0;
-        padding: 0;
+        padding: 0 0 0 30px;
+
+        li {
+            align-items: flex-start;
+            display: flex;
+
+            &:hover {
+                // height: 300px;
+            }
+
+            &::before {
+                content: counter(section) '.';
+                counter-increment: section;
+                display: inline-block;
+                margin-left: -20px;
+                padding: 10px;
+            }
+        }
     }
 
-    &_header {
-        margin-bottom: 30px;
+    &_loader {
+        animation: loader .4s infinite linear;
+        display: block;
+        width: 100px;
+        margin: 10px auto; 
+        visibility: hidden;
+        color: gray;
+        padding: 0 10px;
+
+    }
+
+    @keyframes loader {
+
+        0%,
+        99% {
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 1;
+        }
+    }
+
+    &_branches {
+        display: grid;
+        flex-grow: 1;
+        grid-template-columns: 25% 25% 25% 25%;
+        max-height: 45px;
+        overflow: hidden;
+        transition: all .5s linear;
+
+        &.open {
+            max-height: 400px;
+        }
+
+        &.closed {
+            max-height: 45px;
+
+            span {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        span {
+            box-sizing: border-box;
+            opacity: 0;
+            padding: 10px;
+            transition: opacity 0.5s;
+        }
     }
 
     &_name {
-        width: 30%;
-    }
+        cursor: pointer;
+        display: inline-block;
+        padding: 10px;
+        transition: background .2s;
+        width: 300px;
 
-    &_created,
-    &_updated {
-        width: 20%;
-    }
-
-    &_forks {
-        flex-grow: 1;
-        text-align: right;
+        &:hover {
+            background: rgba(0, 0, 0, .2);
+        }
     }
 }
