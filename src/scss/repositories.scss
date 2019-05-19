@@ -9,37 +9,30 @@
             display: flex;
             flex-wrap: wrap;
 
-            &:hover {
-                // height: 300px;
-            }
-
             &::before {
                 content: counter(section) '.';
                 counter-increment: section;
-                display: inline-block; 
+                display: inline-block;
                 padding: 10px;
             }
         }
     }
 
-    &_item{
-
-
-        .repos_loader{
-            visibility: visible;
+    &_item {
+        .repos_loader {
             display: none;
+            visibility: visible;
         }
     }
 
     &_loader {
         animation: loader .4s infinite linear;
-        display: block;
-        width: 100px;
-        margin: 10px auto; 
-        visibility: hidden;
         color: gray;
+        display: block;
+        margin: 10px auto;
         padding: 0 10px;
-
+        visibility: hidden;
+        width: 100px;
     }
 
     @keyframes loader {
@@ -55,13 +48,14 @@
     }
 
     &_branches {
+        color: blue;
         display: grid;
         flex-grow: 1;
         grid-template-columns: 25% 25% 25% 25%;
         max-height: 45px;
         overflow: hidden;
         transition: all .5s linear;
-        color: blue;
+
         &.open {
             max-height: 400px;
         }
@@ -79,7 +73,7 @@
             box-sizing: border-box;
             opacity: 0;
             padding: 10px;
-            transition: opacity 0.5s;
+            transition: opacity .5s;
         }
     }
 

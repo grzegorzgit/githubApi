@@ -1,21 +1,13 @@
 import React, { Component } from 'react';
-import '../scss/repositories.scss';
-import LoadJson from './LoadJson';
+import '../scss/repositories.scss'; 
 
 export default class Repositories extends Component {
 
     constructor(props) {
         super(props);
-
-
         this.displayRepos = this.displayRepos.bind(this)
         this.loadBranches = this.loadBranches.bind(this)
         this.fadeInBranches = this.fadeInBranches.bind(this)
-
-
-        window.onresize = () => {
-            this.setState({ 'is_it_mobile': window.outerWidth >= 640 });
-        }
     }
 
     displayRepos() {
@@ -37,7 +29,6 @@ export default class Repositories extends Component {
 
         return repos;
     }
-
 
     loadBranches(e) {
 
@@ -81,12 +72,10 @@ export default class Repositories extends Component {
                 }
             };
             xmlhttp.send(null);
-
         }
-
     }
-
-
+    
+    // Show the branches with fade in animation.    
     fadeInBranches(branches) {
         let branch_index = 0;
         let branches_showing = setInterval(() => {
