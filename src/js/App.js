@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Header from "./Header";
-import "../scss/app.scss";
 import Repositories from "./Repositiories";
 
 export default class App extends Component {
@@ -13,6 +12,7 @@ export default class App extends Component {
         };
 
         this.loadRepos = this.loadRepos.bind(this);
+
     }
 
     loadRepos(user) {
@@ -20,7 +20,7 @@ export default class App extends Component {
 
         const url = `https://api.github.com/users/${user}/repos`;
         let loaded_repos = [];
-        let _that = this;
+        let _this = this;
 
         let xmlhttp = new XMLHttpRequest();
         xmlhttp.open("GET", url, true);
@@ -38,11 +38,15 @@ export default class App extends Component {
                         loaded_repos.push(filtered_repo);
                     });
 
-                    _that.setState({
+                    _this.setState({
                         repos: loaded_repos,
                         reposLoader: "hidden"
                     });
                 } else {
+                    _this.setState({
+                        reposLoader: "hidden"
+                    });
+
                     alert("There was a problem loading the results.");
                 }
             }
