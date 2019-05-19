@@ -29,6 +29,10 @@
       "last 1 safari version"
     ]
   },
-  "sasslintConfig": "%homepath%/.sass-ling.yml"
+  "sasslintConfig": "%homepath%/.sass-ling.yml",
+  "devDependencies": {
+    "expect": "^24.8.0",
+    "pending-xhr-puppeteer": "^2.0.0",
+    "puppeteer": "^1.16.0"
+  }
 }
-
