@@ -24,7 +24,6 @@ export default class App extends Component {
         const url = (repository) ? `user=${user}&repository=${repository}` : `user=${user}`;
         this.dont_load_after_change = true;
         window.location.hash = url;
-
     }
 
     componentDidMount() {
@@ -59,7 +58,6 @@ export default class App extends Component {
     }
 
     loadRepos(user, repository = null) {
- 
 
         this.setState({
             user: user,
@@ -67,12 +65,10 @@ export default class App extends Component {
             repository: repository
         });
 
-
         if (repository) {
-        } else {
+        }else{
             this.changeHash(user, repository);
         }
-
 
         const url = `https://api.github.com/users/${user}/repos`;
         let loaded_repos = [];
