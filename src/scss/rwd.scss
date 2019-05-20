@@ -9,12 +9,17 @@
 }
 
 @media all and (max-width: 640px) {
+
     header input,
     header button {
         margin-right: 0;
     }
 
     .repos {
+        &_item {
+            flex-wrap: wrap;
+        }
+
         &_name {
             flex-grow: 1;
             width: auto;
